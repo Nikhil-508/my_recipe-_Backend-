@@ -67,7 +67,7 @@
 
 
 
-//>>>>>>>>>>> Edit recipe Route handling <<<<<<<<<<<<<<<
+//>>>>>>>>>>> get Edit recipe Route handling <<<<<<<<<<<<<<<
 
 router.get('/edit-recipe/:id',(req,res)=>{
     const {id} = req.params
@@ -79,6 +79,9 @@ router.get('/edit-recipe/:id',(req,res)=>{
     }).catch(err => console.log(err))
 })
 
+
+
+//>>>>>>>>>>> updated recipe handling <<<<<<<<<<<<<<<
 
 router.post('/update-recipe/:id',(req,res)=>{
     const {id} = req.params
