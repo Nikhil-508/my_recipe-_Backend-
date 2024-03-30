@@ -45,7 +45,6 @@
     const {id} = req.params
     RecipeModel.find({ "userId": id })
     .then((result)=>{
-        console.log(result,'this is my recipe');
         return res.json(result)})
     .catch(err => console.log(err))
  })
@@ -65,6 +64,31 @@
             res.status(500).json({ message: "Error deleting recipe" });
         });
 });
+
+
+
+//>>>>>>>>>>> Edit recipe Route handling <<<<<<<<<<<<<<<
+
+router.get('/edit-recipe/:id',(req,res)=>{
+    const {id} = req.params
+    console.log("haii edit bknd");
+    RecipeModel.findById(id)
+    .then((result) => {
+        console.log(result,"recipe to edit")
+        res.json(result)
+    }).catch(err => console.log(err))
+})
+
+
+router.post('/update-recipe/:id',(req,res)=>{
+    const {id} = req.params
+    const UpdatedRecipeData = req.body
+    RecipeModel.findByIdAndUpdate(id,UpdatedRecipeData,{new: true})
+    .then((result) => {
+        console.log(result,'updated recipe')
+        return res.json(result)
+    }).catch(err => console.log(err))
+})
 
 
 
